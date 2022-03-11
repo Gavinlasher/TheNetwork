@@ -4,8 +4,8 @@ import { api } from "./AxiosService"
 
 class PostsService {
 
-  async getAllPost() {
-    const res = await api.get('api/posts')
+  async getAllPost(query = {}) {
+    const res = await api.get('api/posts/', { params: query })
     logger.log(res.data)
     AppState.posts = res.data
 

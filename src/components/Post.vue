@@ -1,21 +1,27 @@
 <template>
-  <div class="row bg-secondary text-center p-3">
+  <div class="row bg-light shadow text-center rounded p-2">
     <div class="col-md-12">
-      <div class="d-flex">
+      <div class="d-flex justify-content-between">
         <img
-          class="img-fluid Profile-pic"
+          @click="goTo('Profile')"
+          class="img-fluid Profile-pic selectable"
           :src="posts.creator.picture"
           alt=""
           srcset=""
         />
-        <h2>{{ posts.creator.name }}</h2>
+        <h2 class="p-3">{{ posts.creator.name }}</h2>
       </div>
     </div>
     <div class="col-md-12">
       {{ posts.body }}
     </div>
     <div class="col-md-12">
-      <img src="https://thiscatdoesnotexist.com/" alt="" />
+      <img class="img-fluid rounded" :src="posts.imgUrl" alt="" />
+    </div>
+    <div class="col-md-12 text-end p-3 me-5">
+      <i class="mdi mdi-thumb-up">
+        {{ posts.likes.length }}
+      </i>
     </div>
   </div>
 </template>
@@ -25,6 +31,8 @@
 import { logger } from "../utils/Logger";
 import Pop from "../utils/Pop";
 import { postsService } from "../services/PostsService";
+import { useRouter } from "vue-router";
+import { AppState } from "../AppState";
 export default {
   props: {
     posts: {
@@ -33,7 +41,14 @@ export default {
     },
   },
   setup(props) {
+    const router = useRouter();
     return {
+      goTo(page) {
+        router.push({
+          name: page,
+          params: { id: props.posts.creatorId },
+        });
+      },
       async getPost() {
         try {
           await postsService.getPost();

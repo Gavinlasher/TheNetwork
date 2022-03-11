@@ -21,15 +21,7 @@
       <span class="navbar-toggler-icon" />
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto">
-        <li>
-          <router-link
-            :to="{ name: 'About' }"
-            class="btn text-success lighten-30 selectable text-uppercase"
-          >
-          </router-link>
-        </li>
-      </ul>
+      <ul class="navbar-nav me-auto"></ul>
       <span class="navbar-text">
         <button
           class="
@@ -65,9 +57,9 @@
             class="dropdown-menu p-0 list-group w-100"
             aria-labelledby="authDropdown"
           >
-            <router-link :to="{ name: 'Account' }">
+            <router-link :to="{ name: 'Profile', params: { id: user.id } }">
               <div class="list-group-item list-group-item-action hoverable">
-                Manage Account
+                Profile Page
               </div>
             </router-link>
             <div

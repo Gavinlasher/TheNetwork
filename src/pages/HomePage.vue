@@ -1,6 +1,6 @@
 <template>
-  <div class="row justify-content-center p-3">
-    <div class="col-md-6 p-5" v-for="p in posts.posts" :key="p.id">
+  <div class="row justify-content-center">
+    <div class="col-md-8 p-4" v-for="p in posts.posts" :key="p.id">
       <Post :posts="p" />
     </div>
   </div>
