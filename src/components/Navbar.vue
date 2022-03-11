@@ -46,18 +46,18 @@
             id="authDropdown"
           >
             <img
-              :src="user.picture"
+              :src="account.picture"
               alt="user photo"
               height="40"
               class="rounded"
             />
-            <span class="mx-3 text-success lighten-30">{{ user.name }}</span>
+            <span class="mx-3 text-success lighten-30">{{ account.name }}</span>
           </div>
           <div
             class="dropdown-menu p-0 list-group w-100"
             aria-labelledby="authDropdown"
           >
-            <router-link :to="{ name: 'Profile', params: { id: user.id } }">
+            <router-link :to="{ name: 'Profile', params: { id: account.id } }">
               <div class="list-group-item list-group-item-action hoverable">
                 Profile Page
               </div>
@@ -88,6 +88,8 @@ export default {
   setup() {
     return {
       user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
+      profile: computed(() => AppState.profile),
       async login() {
         AuthService.loginWithPopup();
       },

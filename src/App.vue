@@ -1,6 +1,11 @@
 <template>
   <header>
     <Navbar />
+    <div class="row">
+      <div class="col-md-6" v-for="p in paid" :key="p.banner">
+        <Paid :paid="p" />
+      </div>
+    </div>
   </header>
   <main>
     <router-view />
@@ -15,6 +20,7 @@ export default {
   setup() {
     return {
       appState: computed(() => AppState),
+      paid: computed(() => AppState.paid),
     };
   },
 };
