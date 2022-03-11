@@ -1,6 +1,6 @@
 <template>
   <div class="component">
-    <div class="row">
+    <div class="row p-3">
       <div class="col-6">
         <img :src="paid.banner" alt="" srcset="" />
       </div>
@@ -23,17 +23,7 @@ export default {
     },
   },
   setup() {
-    onMounted(async () => {
-      try {
-        await paidService.getAllPaid();
-      } catch (error) {
-        logger.error(error);
-        Pop.error(error);
-      }
-    });
-    return {
-      paid: computed(() => AppState.paid),
-    };
+    return {};
   },
 };
 </script>

@@ -13,11 +13,20 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { AppState } from "./AppState";
+import { paidService } from "./services/PaidService";
 export default {
   name: "App",
   setup() {
+    onMounted(async () => {
+      try {
+        await paidService.getAllPaid();
+      } catch (error) {
+        logger.error(error);
+        Pop.error(error);
+      }
+    });
     return {
       appState: computed(() => AppState),
       paid: computed(() => AppState.paid),
