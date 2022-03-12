@@ -10,7 +10,8 @@
           srcset=""
         />
         <h2 class="p-3">{{ posts.creator.name }}</h2>
-      </div>
+        <i v-if="account.id == posts.creatorId" @click="remove(posts.id)" class="mdi mdi-delete selectable">
+        </i>
     </div>
     <div class="col-md-12">
       {{ posts.body }}
@@ -19,10 +20,11 @@
       <img class="img-fluid rounded" :src="posts.imgUrl" alt="" />
     </div>
     <div class="col-md-12 text-end p-3 me-5">
-      <i class="mdi mdi-thumb-up">
+      <i @click="like(posts.id)" class="mdi mdi-thumb-up">
         {{ posts.likes.length }}
       </i>
     </div>
+  </div>
   </div>
 </template>
 
@@ -33,6 +35,7 @@ import Pop from "../utils/Pop";
 import { postsService } from "../services/PostsService";
 import { useRouter } from "vue-router";
 import { AppState } from "../AppState";
+import { computed } from "@vue/reactivity";
 export default {
   props: {
     posts: {
@@ -43,6 +46,18 @@ export default {
   setup(props) {
     const router = useRouter();
     return {
+     
+      likes: computed(()=> AppState.posts),
+      account: computed(()=> AppState.account),
+  
+      async like(id){
+try {
+  await postsService.like(id)
+} catch (error) {
+  logger.error(error)
+  Pop.error(error, 'message')
+}
+      },
       goTo(page) {
         router.push({
           name: page,
@@ -57,6 +72,15 @@ export default {
           Pop.error(error, "message");
         }
       },
+      async remove(id){
+try {
+  if(await Pop.confirm())
+  await postsService.remove(id)
+} catch (error) {
+  logger.error(error)
+  Pop.error(error, 'message')
+}
+      }
     };
   },
 };

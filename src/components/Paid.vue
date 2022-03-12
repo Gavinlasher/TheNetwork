@@ -1,11 +1,7 @@
 <template>
-  <div class="component">
-    <div class="row p-3">
-      <div class="col-6">
-        <img :src="paid.banner" alt="" srcset="" />
-      </div>
+    <div class="col-12 p-3">
+        <img class="img-fluid" :src="paid.banner" alt="" srcset="" />
     </div>
-  </div>
 </template>
 
 

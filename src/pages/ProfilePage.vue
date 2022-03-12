@@ -4,8 +4,11 @@
     <img class="rounded" :src="profile.picture" alt="" />
     <p>{{ profile.email }}</p>
   </div>
+  <div>
+    <MakePost v-if="account.id == profile.id" />
+  </div>
   <div class="row justify-content-center">
-    <div class="col-md-8 p-4" v-for="p in posts.posts" :key="p.id">
+    <div class="col-md-8 p-4" v-for="p in posts" :key="p.id">
       <Post :posts="p" />
     </div>
   </div>
@@ -26,6 +29,8 @@ export default {
     watchEffect(async () => {
       try {
         if (route.name == "Profile") {
+          AppState.profile = {}
+          AppState.profile = {}
           await profilesService.getProfile(route.params.id);
           await postsService.getAllPost({ creatorId: route.params.id });
         }

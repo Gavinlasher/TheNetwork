@@ -1,15 +1,18 @@
 <template>
-  <header>
+  <div class="">
+  <header class="">
     <Navbar />
-    <div class="row">
-      <div class="col-md-6" v-for="p in paid" :key="p.banner">
-        <Paid :paid="p" />
-      </div>
-    </div>
   </header>
+  <div class="row">
+    <div class="col-md-6"  v-for="p in paid" :key="p.banner" >
+ <Paid :paid="p"   />
+    </div>
+</div>
+  
   <main>
     <router-view />
   </main>
+  </div>
 </template>
 
 <script>
@@ -30,6 +33,7 @@ export default {
     return {
       appState: computed(() => AppState),
       paid: computed(() => AppState.paid),
+      posts: computed(()=> AppState.posts)
     };
   },
 };
