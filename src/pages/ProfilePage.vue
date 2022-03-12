@@ -2,7 +2,9 @@
   <div class="about text-center">
     <h1>Welcome {{ profile.name }}</h1>
     <img class="rounded" :src="profile.picture" alt="" />
-    <p>{{ profile.email }}</p>
+  </div>
+  <div v-if="account.id == profile.id">
+    <EditProfile />
   </div>
   <div>
     <MakePost v-if="account.id == profile.id" />
@@ -11,6 +13,21 @@
     <div class="col-md-8 p-4" v-for="p in posts" :key="p.id">
       <Post :posts="p" />
     </div>
+  </div>
+   <div class="mt-3">
+  <button @click="changePage(older)" 
+  class="btn btn-primary me-5 text-light"
+ :disabled="!older"
+  
+  >
+    Previous
+
+  </button>
+  <button v-if="newer"
+  @click="changePage(newer)"
+   class="btn btn-primary text-light">
+   next
+   </button>
   </div>
 </template>
 
@@ -43,6 +60,16 @@ export default {
       posts: computed(() => AppState.posts),
       account: computed(() => AppState.account),
       profile: computed(() => AppState.profile),
+         newer: computed(()=> AppState.nextPage),
+      older: computed(()=> AppState.previousPage),
+       async changePage(page){
+        try {
+          await postsService.changePage(page)
+        } catch (error) {
+          logger.error(error)
+          Pop.error(error.message, 'error')
+        }
+      },
     };
   },
 };

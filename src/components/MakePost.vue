@@ -1,7 +1,7 @@
 <template>
   <form
     @submit.prevent="createPost"
-    class="row bg-grey darken-20 justify-content-center elevation-3 p-2 m-5"
+    class="row bg-light  justify-content-center elevation-3 p-2 m-5"
   >
     <div class="col-md-4 mb-2">
       <label for="" class="form-label">Body</label>
@@ -21,12 +21,12 @@
         required
         type="text"
         class="form-control"
-        aria-describedby="helpId"
+       
       />
     </div>
 
     <div class="col-12 d-flex justify-content-end">
-      <button class="btn btn-primary">create</button>
+      <button class="btn btn-primary text-light">create</button>
     </div>
   </form>
 </template>

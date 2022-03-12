@@ -9,6 +9,9 @@
         />
       </div>
     </router-link>
+    <div>
+      <SearchBar />
+    </div>
     <button
       class="navbar-toggler"
       type="button"

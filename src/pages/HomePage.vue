@@ -10,13 +10,13 @@
  :disabled="!older"
   
   >
-    Previous
+    Next
 
   </button>
   <button v-if="newer"
   @click="changePage(newer)"
    class="btn btn-primary">
-   next
+   Previous
    </button>
   </div>
 </template>
