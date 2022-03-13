@@ -23,9 +23,10 @@
       <i v-if="posts.creator.graduated" class="mdi  mdi-school mdi-spin selectable"></i>
     </div>
     
-    <div class="col-md-12 text-left">
+    <div class="col-md-12 text-center p-3">
       {{ posts.body }}
     </div>
+    <div class="">{{posts.updatedAt}}</div>
     <div class="col-md-12 text-center">
       <img class="post-img img-fluid rounded shadow" :src="posts.imgUrl" alt="" />
     </div>
