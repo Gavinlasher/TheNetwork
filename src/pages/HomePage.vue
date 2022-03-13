@@ -1,4 +1,7 @@
 <template>
+<div>
+    <MakePost v-if="account.id == profile.id" />
+  </div>
   <div class="row justify-content-center">
     <div class="col-md-8 p-4" v-for="p in posts" :key="p.id">
       <Post :posts="p" />
@@ -39,6 +42,8 @@ export default {
       }
     });
     return {
+      account: computed(()=> AppState.account),
+      profile: computed(()=> AppState.profile),
       posts: computed(() => AppState.posts),
        newer: computed(()=> AppState.nextPage),
       older: computed(()=> AppState.previousPage),

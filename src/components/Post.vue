@@ -1,5 +1,5 @@
 <template>
-  <div class="row bg-light shadow text-center rounded p-2">
+  <div class="row bg-light shadow  rounded p-2">
     <div class="col-md-12">
       <div class="d-flex justify-content-between">
         <img
@@ -13,11 +13,21 @@
         <i v-if="account.id == posts.creatorId" @click="remove(posts.id)" class="mdi mdi-delete selectable">
         </i>
     </div>
-    <div class="col-md-12">
+    <div class="col-12 text-center">
+      <a v-if="posts.creator.linkedin != '' " :href="posts.creator.linkedin">
+      <i class="mdi mdi-linkedin selectable"></i>
+      </a>
+      <a  v-if="posts.creator.github != '' " :href="posts.creator.github">
+      <i class="mdi mdi-github selectable"></i>
+      </a>
+      <i v-if="posts.creator.graduated" class="mdi  mdi-school mdi-spin selectable"></i>
+    </div>
+    
+    <div class="col-md-12 text-left">
       {{ posts.body }}
     </div>
-    <div class="col-md-12">
-      <img class="img-fluid rounded" :src="posts.imgUrl" alt="" />
+    <div class="col-md-12 text-center">
+      <img class="post-img img-fluid rounded shadow" :src="posts.imgUrl" alt="" />
     </div>
     <div class="col-md-12 text-end p-3 me-5">
       <i @click="like(posts.id)" class="mdi mdi-thumb-up">
@@ -92,5 +102,9 @@ try {
   height: 10vh;
   width: 10vh;
   border-radius: 50%;
+}
+.post-img{
+  height: 50vh;
+  width: 70vh;
 }
 </style>

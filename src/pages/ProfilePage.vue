@@ -1,8 +1,26 @@
 <template>
-  <div class="about text-center">
-    <h1>Welcome {{ profile.name }}</h1>
-    <img class="rounded" :src="profile.picture" alt="" />
+<div class="container-fluid bg-primary">
+<div class="row">
+  <div class="col-md-3">
+  <div class="about  text-center text-light p-3">
+    <img class=" profile" :src="profile.picture" alt="" />
+    <h5 class="">{{ profile.name }}</h5>
+ <div>
+ <a :href="profile.github">
+   <i class="mdi mdi-github selectable text-light"></i>
+ </a>
+ <a :href="profile.linkedin">
+   <i class="mdi mdi-linkedin selectable text-light"></i>
+ </a>
+ <i v-if="profile.graduated" class="mdi mdi-school"></i>
+ </div>
   </div>
+  </div>
+<div class="col-md-7 text-light text-center p-5">
+  {{profile.bio}}
+</div>
+</div>
+</div>
   <div v-if="account.id == profile.id">
     <EditProfile />
   </div>
@@ -76,7 +94,10 @@ export default {
 </script>
 
 <style scoped>
-img {
-  max-width: 100px;
+
+.profile{
+ height: 25vh;
+  width: 25vh;
+  border-radius: 50%;
 }
 </style>

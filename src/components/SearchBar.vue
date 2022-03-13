@@ -1,12 +1,9 @@
 <template>
   <form class="form-group row" @submit.prevent="search">
-    <input
-      v-model="searchTerm"
-      type="text"
-      class="col-9"
-      placeholder="search...."
-    />
-    <button class="btn btn-outline-primary col-3">search</button>
+   <div class="input-group  col-md-6">
+  <input v-model="searchTerm" type="text" class="form-control" placeholder="Search Post...." aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-light" type="submit" id="button-addon2">Search</button>
+</div>
   </form>
 </template>
 

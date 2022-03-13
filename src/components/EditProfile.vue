@@ -5,6 +5,16 @@
     <input v-model="editable.name" type="text" />
     <label for="">Profile Image</label>
     <input v-model="editable.picture" type="text" />
+     <label for="">Cover Image</label>
+    <input v-model="editable.coverImg" type="text" />
+     <label for="">Bio</label>
+    <input v-model="editable.bio" type="text" />
+     <label for="">Class year</label>
+    <input v-model="editable.class" type="text" />
+     <label for="">Github</label>
+    <input v-model="editable.github" type="text" />
+     <label for="">LinkedIn</label>
+    <input v-model="editable.linkedin" type="text" />
     <button type="button" class="btn btn-primary mt-3 text-light" @click="update">Edit Profile</button>
   </form>
 </div>
