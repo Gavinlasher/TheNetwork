@@ -6,7 +6,7 @@ class PaidService {
 
   async getAllPaid() {
     const res = await api.get('api/ads')
-    logger.log(res.data)
+  
     AppState.paid = res.data
 
   }

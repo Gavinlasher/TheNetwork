@@ -15,6 +15,8 @@
     <input v-model="editable.github" type="text" />
      <label for="">LinkedIn</label>
     <input v-model="editable.linkedin" type="text" />
+    <label for="">Graduated</label>
+    <input v-model="editable.graduated" type="text">
     <button type="button" class="btn btn-primary mt-3 text-light" @click="update">Edit Profile</button>
   </form>
 </div>
