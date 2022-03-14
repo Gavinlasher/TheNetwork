@@ -19,6 +19,7 @@
 import { computed, onMounted } from "vue";
 import { AppState } from "./AppState";
 import { paidService } from "./services/PaidService";
+import Pop from "./utils/Pop";
 export default {
   name: "App",
   setup() {

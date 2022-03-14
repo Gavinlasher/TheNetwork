@@ -1,5 +1,5 @@
 <template>
-<div class="container-fluid bg-primary">
+<div  class="container-fluid bg-primary ">
 <div class="row">
   <div class="col-md-3">
   <div class="about  text-center text-light p-3">
@@ -75,6 +75,7 @@ export default {
       }
     });
     return {
+      coverImg: computed (()=> `url('${AppState.profile.coverImg}')`),
       posts: computed(() => AppState.posts),
       account: computed(() => AppState.account),
       profile: computed(() => AppState.profile),
@@ -93,11 +94,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .profile{
  height: 25vh;
   width: 25vh;
   border-radius: 50%;
+}
+.cover-img{
+  background-image: v-bind
 }
 </style>
